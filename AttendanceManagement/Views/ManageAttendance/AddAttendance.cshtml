@@ -1,0 +1,203 @@
+﻿@model AttendanceManagement.Models.Student
+
+@{
+    ViewBag.Title = "Add Attendance";
+    Layout = "~/Views/Shared/_TPLayout.cshtml";
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Manage Att.</title>
+
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="./../vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="./../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="./../fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="./../vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="./../vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="./../vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="./../vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="./../vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="./../css/util.css">
+    <link rel="stylesheet" type="text/css" href="./../css/main.css">
+    <!--===============================================================================================-->
+    <!-- Bootstrap Core CSS -->
+    <link href="./../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="./../fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet"
+          type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <link href="./../vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="./../css/stylish-portfolio.min.css" rel="stylesheet">
+    <link href="./../css/add_attendance.css" rel="stylesheet">
+
+    <!--Table requirements-->
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="./../vendor/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="./../vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="./../vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="./../vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="./../util.css">
+    <link rel="stylesheet" type="text/css" href="./../table_main.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body id="page-top" background="./../img/header.jpg">
+    @using (Html.BeginForm("Index", "ManageAttendance"))
+    {
+        @Html.AntiForgeryToken()
+
+
+        <!-- Header -->
+
+
+        <header class="d-flex">
+            <div class="container text-center my-auto">
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <h1 class="text-uppercase">
+                            <strong style="color: white">Upload Attendance</strong>
+                        </h1>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-10 mx-auto text-center">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="#">@Html.DisplayNameFor(model => model.Department)</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="#">@Html.DisplayNameFor(model => model.Sem)</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="#">@Html.DisplayNameFor(model => model.Section)</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="#">@Html.DisplayNameFor(model => model.Date)</a>
+                            </li>
+                            <li class="breadcrumb-item active">@Html.DisplayNameFor(model => model.Slot)</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-10 mx-auto text-center">
+                        <div class="table100 ver2 m-b-40">
+                            <div class="table100-head">
+                                <table>
+                                    <thead>
+                                        <tr class="row100 head">
+                                            <th class="cell100 column1">@Html.DisplayNameFor(model => model.USN)</th>
+                                            <th class="cell100 column2"></th>
+                                            <th class="cell100 column3"></th>
+                                            <th class="cell100 column4">@Html.DisplayNameFor(model => model.Name)</th>
+                                            <th class="cell100 column5"></th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+
+                            <div class="table100-body js-pscroll">
+                                <table>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr class="row100 body">
+                                                <td class="cell100 column1">@Html.DisplayFor(modelItem => item.USN)</td>
+                                                <td class="cell100 column2"></td>
+                                                <td class="cell100 column3"></td>
+                                                <td class="cell100 column4">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input class="form-check-input" type="checkbox" value="" checked="">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td class="cell100 column5"></td>
+                                            </tr>
+
+                                        }
+
+
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-10 mx-auto text-center">
+                        <div class="container-login100-form-btn" style="padding-bottom: 5%">
+                            <button class="login100-form-btn">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
+            <i class="fa fa-angle-up"></i>
+        </a>
+    }
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="./../vendor/jquery/jquery.min.js"></script>
+    <script src="./../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="./../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="./../js/stylish-portfolio.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="~/vendor/scrollreveal/scrollreveal.min.js"></script>
+    <script src="~/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="~/js/creative.min.js"></script>
+
+</body>
+
+</html>

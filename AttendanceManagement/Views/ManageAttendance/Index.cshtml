@@ -1,0 +1,314 @@
+﻿@model AttendanceManagement.Models.Student
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_TPLayout.cshtml";
+
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Manage Att.</title>
+
+    <link rel="stylesheet" href="~/css/bootstrap-4.0.0-dist/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="~/css/bootstrap-4.0.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/bootstrap-4.0.0-dist/css/bootstrap-reboot.css">
+
+    <link rel="stylesheet" href="~/css/bootstrap-4.0.0-dist/bootstrap-datepicker3.standalone.css">
+    <link rel="stylesheet" href="~/css/bootstrap-4.0.0-dist/bootstrap-datepicker.standalone.css">
+
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/css/main.css">
+    <!--===============================================================================================-->
+    <!-- Bootstrap Core CSS -->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="~/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet"
+          type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <link href="~/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="~/css/stylish-portfolio.min.css" rel="stylesheet">
+    <link href="~/css/manage_attendance.css" rel="stylesheet">
+
+    <!-- Plugin CSS -->
+    <link href="~/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <!--Table requirements-->
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/util.css">
+    <link rel="stylesheet" type="text/css" href="~/table_main.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="~/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="~/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="~/css/creative.min.css" rel="stylesheet">
+    <link href="~/css/teachers_portal.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+    @using (Html.BeginForm("Index", "ManageAttendance"))
+    {
+        @Html.AntiForgeryToken()
+        <!-- Navigation -->
+
+
+        <!-- Header -->
+
+
+        <header class="d-flex">
+            <div class="container text-center my-auto">
+                <br>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-lg-12 mx-auto">
+                        <h1 class="text-uppercase">
+                            <strong style="color: white">Manage Attendance</strong>
+                        </h1>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-lg-4 mx-auto text-center">
+                        <fieldset>
+
+                            <div class="form-group">
+                                <select class="custom-select">
+                                    <option selected="">BRANCH</option>
+                                    <option value="1">CSE</option>
+                                    <option value="2">ISE</option>
+                                    <option value="3">ECE</option>
+                                    <option value="4">ME</option>
+                                    <option value="5">CE</option>
+                                    <option value="6">EIE</option>
+                                </select>
+                                @Html.ValidationMessageFor(model => model.Department, "", new { @class = "text-danger" })
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 mx-auto text-center">
+                        <fieldset>
+
+                            <div class="form-group">
+                                <select class="custom-select">
+                                    <option selected="">SEM</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+
+                                </select>
+                                @Html.ValidationMessageFor(model => model.Sem, "", new { @class = "text-danger" })
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 mx-auto text-center">
+                        <fieldset>
+
+                            <div class="form-group">
+                                <select class="custom-select">
+                                    <option selected="">SECTION</option>
+                                    <option value="1">A</option>
+                                    <option value="2">B</option>
+                                    <option value="3">C</option>
+                                </select>
+                                @Html.ValidationMessageFor(model => model.Section, "", new { @class = "text-danger" })
+                            </div>
+
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class=" col-lg-4 mx-auto text-center">
+
+                        <div class=" form-group">
+                            <input class="form-control" id="datepicker" name="date" placeholder="DATE : MM/DD/YYYY" type="text" />
+                        </div>
+                        @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 mx-auto text-center">
+                        <fieldset>
+
+                            <div class="form-group">
+                                <select class="custom-select">
+                                    <option selected="">SLOT</option>
+                                    <option value="1">S1</option>
+                                    <option value="2">S2</option>
+                                    <option value="3">S3</option>
+                                    <option value="4">S4</option>
+                                    <option value="5">S5</option>
+                                    <option value="6">S6</option>
+                                    <option value="7">S7</option>
+                                    <option value="7">L1</option>
+                                    <option value="7">L2</option>
+                                </select>
+                                @Html.ValidationMessageFor(model => model.Slot, "", new { @class = "text-danger" })
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <br>
+                <div class="row" style="padding-bottom: 5%">
+                    <div class="col-lg-4">
+
+                    </div>
+                    <div class="col-lg-2 text-center" style="padding-bottom: 5%">
+
+                        <div class="container-login100-form-btn">
+                            <button class="login100-form-btn" type="submit">
+                                ADD ATT.
+                            </button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-lg-2 text-center">
+
+                        <div class="container-login100-form-btn">
+                            <button class="login100-form-btn" type="submit">
+                                EDIT ATT.
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-4">
+
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
+            <i class="fa fa-angle-up"></i>
+        </a>
+    }
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="~/js/stylish-portfolio.min.js"></script>
+    <script src="~/js/manage_attendance.js"></script>
+
+    <script src="~/js/creative.min.js"></script>
+
+    <!--===============================================================================================-->
+    <script src="~/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/daterangepicker/moment.min.js"></script>
+    <script src="~/vendor/daterangepicker/daterangepicker.js"></script>
+    <script src="~/css/bootstrap-4.0.0-dist/bootstrap-datepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/js/main.js"></script>
+
+    <script src="~/css/bootstrap-4.0.0-dist/bootstrap-datepicker.js"></script>
+
+
+
+
+
+
+    <script type="text/javascript">
+        $(function () {
+            $('#Date').datetimepicker({
+                format: "DD/MM/YYYY"
+            }).on('dp.change', function (e) {
+                $(this).data('DateTimePicker').hide();
+            });
+        });
+
+    </script>
+
+
+    <script type="text/javascript">
+        $(function () { // will trigger when the document is ready
+            $('.datepicker').datepicker(); //Initialise any date pickers
+        });
+    </script>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+
+</body>
+
+</html>
