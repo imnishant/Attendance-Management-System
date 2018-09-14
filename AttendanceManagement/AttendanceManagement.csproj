@@ -250,6 +250,7 @@
     <Compile Include="Models\Attendance.cs">
       <DependentUpon>AMS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AttendanceViewModel.cs" />
     <Compile Include="Models\C__MigrationHistory.cs">
       <DependentUpon>AMS.tt</DependentUpon>
     </Compile>
@@ -278,6 +279,9 @@
       <DependentUpon>AMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Subject.cs">
+      <DependentUpon>AMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>AMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Teacher.cs">

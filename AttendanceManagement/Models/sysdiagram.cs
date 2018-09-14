@@ -12,18 +12,12 @@ namespace AttendanceManagement.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Attendance
+    public partial class sysdiagram
     {
-        public string Student_USN { get; set; }
-        public string Teacher_TID { get; set; }
-        public string Subject_SubCode { get; set; }
-        public System.DateTime Date { get; set; }
-        public string Slot { get; set; }
-        public Nullable<int> IsPresent { get; set; }
-
-
-        public virtual Student Student { get; set; }
-        public virtual Subject Subject { get; set; }
-        public virtual Teacher Teacher { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

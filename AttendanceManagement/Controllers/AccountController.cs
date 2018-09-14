@@ -177,9 +177,14 @@ namespace AttendanceManagement.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
+
+
+                    // this gets the first tuple ri
                     AttendanceManagementDBEntities1 db = new AttendanceManagementDBEntities1();
                     var customer = db.AspNetUsers.FirstOrDefault(u => u.Email == model.Email);
 
+
+            
                     Teacher teacher = new Teacher();
                     teacher.TID = model.TID;
                     teacher.Name = model.Name;

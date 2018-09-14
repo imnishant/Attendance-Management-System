@@ -34,6 +34,7 @@ namespace AttendanceManagement.Models
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Subject> Subjects { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Teacher> Teachers { get; set; }
         public virtual DbSet<Teacher_Teaches_Student> Teacher_Teaches_Student { get; set; }
     }

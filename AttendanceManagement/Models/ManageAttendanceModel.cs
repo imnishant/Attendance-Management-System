@@ -10,18 +10,14 @@ namespace AttendanceManagement.Models
     public class ManageAttendanceModel
     {
 
+        
 
-        public List<string> Branch { get; set; }
 
-        public List<string> Semester { get; set; }
-
-        public List<string> Section { get; set; }
-
-        public List<string> Departments { get; set; }
-
-        public List<string> Slot { get; set; }
-
-        public DateTime Date { get; set; }
+        public string Department_DID { get; set; }
+        public int Sem { get; set; }
+        public string Section { get; set; }
+        public string Slot { get; set; }
+        public System.DateTime Date { get; set; }
 
 
 
