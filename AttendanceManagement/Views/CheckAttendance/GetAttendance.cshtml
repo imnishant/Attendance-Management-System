@@ -1,11 +1,22 @@
-﻿
+﻿@using AttendanceManagement.ViewModel;
+@using AttendanceManagement.Models;
+@using System.Linq;
+
 @model AttendanceManagement.ViewModel.AttendanceViewModel
 
 @{
-    ViewBag.Title = "AddAttendance";
+    ViewBag.Title = "GetAttendance";
     var Students = Model.Students;
 
     Layout = "~/Views/Shared/_TPLayout.cshtml";
+
+
+    AttendanceManagementDBEntities1 dbo = new AttendanceManagementDBEntities1();
+
+    var teacher = dbo.Teachers.FirstOrDefault(u => u.TID == Model.TeacherId);
+    var department = dbo.Departments.FirstOrDefault(u => u.DID == teacher.Department_DID);
+    var tts = dbo.Teacher_Teaches_Student.FirstOrDefault(u => u.Teacher_TID == teacher.TID);
+    var student = dbo.Students.FirstOrDefault(u => u.USN == tts.Student_USN);
 }
 
 
@@ -100,7 +111,7 @@
 <body id="page-top" background="~/img/header.jpg">
 
 
-    @using (Html.BeginForm("AddAttendance", "ManageAttendance", FormMethod.Post))
+    @using (Html.BeginForm("GetAttendance", "CheckAttendance", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
@@ -115,7 +126,7 @@
                 <div class="row">
                     <div class="col-lg-10 mx-auto">
                         <h1 class="text-uppercase">
-                            <strong style="color: white">Upload Attendance</strong>
+                            <strong style="color: white">Attendance</strong>
                         </h1>
                     </div>
                 </div>
@@ -124,16 +135,19 @@
                     <div class="col-lg-10 mx-auto text-center">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="#">@Html.DisplayFor(model => model.TeacherId)</a>
+                                @department.Name
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">@Html.DisplayFor(model => model.SubjectCode)</a>
+                                @student.Sem
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">@Html.DisplayFor(model => model.Date)</a>
+                                @student.Section
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">@Html.DisplayFor(model => model.Slot)</a>
+                                @Model.Date.ToLongDateString()
+                            </li>
+                            <li class="breadcrumb-item">
+                                @Model.Slot
                             </li>
                             <!-- <li class="breadcrumb-item active">Html.DisplayNameFor(model => model.Slot)</li>-->
                         </ol>
@@ -150,7 +164,8 @@
                                             <th class="cell100 column2"></th>
                                             <th class="cell100 column3">Name</th>
                                             <th class="cell100 column4"></th>
-                                            <th class="cell100 column5">Present</th>
+                                            <th class="cell100 column5">Status</th>
+
                                         </tr>
                                     </thead>
                                 </table>
@@ -161,27 +176,45 @@
 
                                     <tbody>
 
-                                        @for (int i = 0; i < Model.Students.Count(); i++)
-        {
-                                        <tr class="row100 body">
-                                            <td class="cell100 column1">
-                                                @Html.DisplayFor(modelItem => modelItem.Students[i].USN)
-                                            </td>
-                                    
+                                        @for (int i = 0; i < Model.Attds.Count(); i++)
+                                        {
 
-                                            <td class="cell100 column2">
+                                            <tr class="row100 body">
+                                                <td class="cell100 column1">
+                                                    @Html.DisplayFor(modelItem => modelItem.Attds[i].Student_USN)
+                                                </td>
+                                                <td class="cell100 column2">
 
-                                            <td class="cell100 column3">
-                                                @Html.DisplayFor(modelItem => modelItem.Students[i].Name)
-                                            </td>
-                                            <td class="cell100 column4">
-                                            </td>
-                                            <td class="cell100 column5">
-                                                @Html.CheckBoxFor(model => model.IsPresent[i], new { @class = "form-check-input" })
+                                                <td class="cell100 column3">
+                                                    @Html.DisplayFor(modelItem => modelItem.Students[i].Name)
+                                                </td>
+                                                <td class="cell100 column4"></td>
 
-                                            </td>
-                                        </tr>
-}
+                                                <td class="cell100 column5">
+
+                                                    @{
+                                                        AttendanceManagementDBEntities1 db = new AttendanceManagementDBEntities1();
+                                                        AttendanceViewModel attendanceViewModel = new AttendanceViewModel();
+
+                                                        var att = Model.Attds[i];
+
+                                                        var a = db.Attendances.FirstOrDefault(u => u.Id == att.Id);
+
+
+                                                    }
+                                                    @if (a.IsPresent == 1)
+                                                    {
+                                                        <h3>P</h3>
+                                                    }
+                                                    else
+
+                                                    {
+                                                        <h3>A</h3>
+                                                    }
+
+                                                </td>
+                                            </tr>
+                                        }
 
 
 

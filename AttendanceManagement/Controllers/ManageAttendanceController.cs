@@ -67,18 +67,19 @@ namespace AttendanceManagement.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AddAttendance([Bind(Include = "IsPresent")] AttendanceViewModel model)
         {
-            Attendance attendance = new Attendance();
-            attendance.Date = attendanceViewModel.Date;
-            attendance.Slot = attendanceViewModel.Slot;
-            attendance.Subject_SubCode = attendanceViewModel.SubjectCode;
-            attendance.Teacher_TID = attendanceViewModel.TeacherId;
-            attendance.Teacher = db.Teachers.Find(attendance.Teacher_TID);
-            attendance.Subject = db.Subjects.Find(attendance.Subject_SubCode);
             int countOfStudents = attendanceViewModel.Students.Count;
             var checkBoxes = model.IsPresent.ToList();
             var students = attendanceViewModel.Students;
             for (int i = 0; i < countOfStudents; i++)
             {
+
+                Attendance attendance = new Attendance();
+                attendance.Date = attendanceViewModel.Date;
+                attendance.Slot = attendanceViewModel.Slot;
+                attendance.Subject_SubCode = attendanceViewModel.SubjectCode;
+                attendance.Teacher_TID = attendanceViewModel.TeacherId;
+                attendance.Teacher = db.Teachers.Find(attendance.Teacher_TID);
+                attendance.Subject = db.Subjects.Find(attendance.Subject_SubCode);
                 attendance.Student_USN = students[i].USN;
                 if (checkBoxes[i])
                     attendance.IsPresent = 1;
@@ -96,7 +97,7 @@ namespace AttendanceManagement.Controllers
                          db.SaveChanges();
                          return RedirectToAction("Index");*/
             }
-                return View(attendance);
+            return RedirectToAction("Index");
         }
 
         public ActionResult Invalid()

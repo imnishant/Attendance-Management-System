@@ -14,14 +14,14 @@ namespace AttendanceManagement.Models
     
     public partial class Attendance
     {
+        public int Id { get; set; }
         public string Student_USN { get; set; }
         public string Teacher_TID { get; set; }
         public string Subject_SubCode { get; set; }
         public System.DateTime Date { get; set; }
         public string Slot { get; set; }
-        public Nullable<int> IsPresent { get; set; }
-
-
+        public int IsPresent { get; set; }
+    
         public virtual Student Student { get; set; }
         public virtual Subject Subject { get; set; }
         public virtual Teacher Teacher { get; set; }

@@ -9,6 +9,7 @@ namespace AttendanceManagement.ViewModel
     public class AttendanceViewModel
     {
         public List<Student> Students { get; set; }
+        public List<Attendance> Attds{ get; set; }
         public string TeacherId { get; set; }
         public System.DateTime Date { get; set; }
         public string Slot { get; set; }

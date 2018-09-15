@@ -17,6 +17,7 @@ namespace AttendanceManagement.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Subject()
         {
+            this.Attendances = new HashSet<Attendance>();
             this.Students = new HashSet<Student>();
             this.Teacher_Teaches_Student = new HashSet<Teacher_Teaches_Student>();
         }
@@ -25,6 +26,8 @@ namespace AttendanceManagement.Models
         public string Name { get; set; }
         public string Department_DID { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Attendance> Attendances { get; set; }
         public virtual Department Department { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Student> Students { get; set; }
