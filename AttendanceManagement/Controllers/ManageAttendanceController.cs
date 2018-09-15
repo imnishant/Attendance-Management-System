@@ -8,6 +8,7 @@ using AttendanceManagement.ViewModel;
 using System.Data.Entity;
 using System.Collections;
 
+
 namespace AttendanceManagement.Controllers
 {
     public class ManageAttendanceController : Controller
@@ -15,6 +16,7 @@ namespace AttendanceManagement.Controllers
         private AttendanceManagementDBEntities1 db = new AttendanceManagementDBEntities1();
         
         private static AttendanceViewModel attendanceViewModel = new AttendanceViewModel();
+
 
         // GET: ManageAttendance/Index
         public ActionResult Index()
@@ -42,7 +44,7 @@ namespace AttendanceManagement.Controllers
         public ActionResult AddAttendance(string departmentID, int Semester, string section, string slot, DateTime date)
         {
             attendanceViewModel.Slot = slot;
-            attendanceViewModel.Date = date;
+            attendanceViewModel.Date = date.ToShortDateString(); ;
             var students = db.Students.Where(s => s.Department_DID == (departmentID)).Where(s => s.Sem == (Semester)).Where(s => s.Section == (section)).ToList();
             attendanceViewModel.Students = students;
             //var subjectCode = students[0].Subject_SubCode;

@@ -251,12 +251,16 @@
     <script src="~/vendor/daterangepicker/moment.min.js"></script>
     <script src="~/vendor/daterangepicker/daterangepicker.js"></script>
     <script src="~/css/bootstrap-4.0.0-dist/bootstrap-datepicker.js"></script>
+    <script>
+
+        string Date = datePicker1.SelectedDate.Value.ToString("dd-MMM-yyyy");
+    </script>
+
     <!--===============================================================================================-->
     <script src="~/vendor/countdowntime/countdowntime.js"></script>
     <!--===============================================================================================-->
     <script src="~/js/main.js"></script>
 
-    <script src="~/css/bootstrap-4.0.0-dist/bootstrap-datepicker.js"></script>
 
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
@@ -268,7 +272,7 @@
     <script type="text/javascript">
         $(function () {
             $('#Date').datetimepicker({
-                format: "DD/MM/YYYY"
+                format: "MM/DD/YYYY"
             }).on('dp.change', function (e) {
                 $(this).data('DateTimePicker').hide();
             });

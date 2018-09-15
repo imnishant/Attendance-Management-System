@@ -17,7 +17,7 @@ namespace AttendanceManagement.Models
         public int Sem { get; set; }
         public string Section { get; set; }
         public string Slot { get; set; }
-        public System.DateTime Date { get; set; }
+        public string Date { get; set; }
 
 
 

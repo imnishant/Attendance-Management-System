@@ -75,9 +75,9 @@
           <Property Name="Student_USN" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Teacher_TID" Type="nvarchar" MaxLength="7" Nullable="false" />
           <Property Name="Subject_SubCode" Type="nvarchar" MaxLength="7" Nullable="false" />
-          <Property Name="Date" Type="date" Nullable="false" />
           <Property Name="Slot" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="IsPresent" Type="int" Nullable="false" />
+          <Property Name="Date" Type="nvarchar" MaxLength="15" Nullable="false" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
@@ -542,7 +542,7 @@
           <Property Name="Student_USN" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="Teacher_TID" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
           <Property Name="Subject_SubCode" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Date" Type="String" Nullable="false" />
           <Property Name="Slot" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Student" Relationship="AttendanceManagementDBModel.FK__Attendanc__Stude__48CFD27E" FromRole="Attendance" ToRole="Student" />
           <NavigationProperty Name="Subject" Relationship="AttendanceManagementDBModel.FK__Attendanc__Subje__4AB81AF0" FromRole="Attendance" ToRole="Subject" />

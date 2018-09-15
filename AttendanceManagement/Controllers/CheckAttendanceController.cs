@@ -49,14 +49,14 @@ namespace AttendanceManagement.Controllers
             var teacher = db.Teachers.FirstOrDefault(u => u.REFID == customer.Id);
 
             var subject = db.Subjects.FirstOrDefault(u => u.Department_DID == teacher.Department_DID);
+            string dt = date.ToShortDateString();
 
-
-            var attendances = db.Attendances.Where(s => s.Teacher_TID == teacher.TID).Where(s => s.Subject_SubCode == subject.SubCode).Where(s => s.Date == date).Where(s => s.Slot == slot).ToList();
+            var attendances = db.Attendances.Where(s => s.Teacher_TID == teacher.TID).Where(s => s.Subject_SubCode == subject.SubCode).Where(s => s.Date == dt).Where(s => s.Slot == slot).ToList();
             var students = db.Students.Where(s => s.Department_DID == (departmentID)).Where(s => s.Sem == (Semester)).Where(s => s.Section == (section)).ToList();
 
 
             attendanceViewModel.Attds = attendances;
-            attendanceViewModel.Date = date;
+            attendanceViewModel.Date = dt;
             attendanceViewModel.Slot = slot;
             attendanceViewModel.TeacherId = teacher.TID;
             attendanceViewModel.SubjectCode = subject.SubCode;
