@@ -113,86 +113,86 @@
 
     @using (Html.BeginForm("GetAttendance", "CheckAttendance", FormMethod.Post))
     {
-        @Html.AntiForgeryToken()
+    @Html.AntiForgeryToken()
 
 
-        <!-- Header -->
+ <!-- Header -->
 
 
-        <header class="d-flex">
-            <div class="container text-center my-auto">
-                <br>
-                <br>
-                <div class="row">
-                    <div class="col-lg-10 mx-auto">
-                        <h1 class="text-uppercase">
-                            <strong style="color: white">Attendance</strong>
-                        </h1>
-                    </div>
+    <header class="d-flex">
+        <div class="container text-center my-auto">
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h1 class="text-uppercase">
+                        <strong style="color: white">Attendance</strong>
+                    </h1>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-lg-10 mx-auto text-center">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                @department.Name
-                            </li>
-                            <li class="breadcrumb-item">
-                                @student.Sem
-                            </li>
-                            <li class="breadcrumb-item">
-                                @student.Section
-                            </li>
-                            <li class="breadcrumb-item">
-                                @Model.Date
-                            </li>
-                            <li class="breadcrumb-item">
-                                @Model.Slot
-                            </li>
-                            <!-- <li class="breadcrumb-item active">Html.DisplayNameFor(model => model.Slot)</li>-->
-                        </ol>
-                    </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-lg-10 mx-auto text-center">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            @department.Name
+                        </li>
+                        <li class="breadcrumb-item">
+                            @student.Sem
+                        </li>
+                        <li class="breadcrumb-item">
+                            @student.Section
+                        </li>
+                        <li class="breadcrumb-item">
+                            @Model.Date
+                        </li>
+                        <li class="breadcrumb-item">
+                            @Model.Slot
+                        </li>
+                        <!-- <li class="breadcrumb-item active">Html.DisplayNameFor(model => model.Slot)</li>-->
+                    </ol>
                 </div>
-                <div class="row">
-                    <div class="col-lg-10 mx-auto text-center">
-                        <div class="table100 ver2 m-b-40">
-                            <div class="table100-head">
-                                <table>
-                                    <thead>
-                                        <tr class="row100 head">
-                                            <th class="cell100 column1">USN</th>
-                                            <th class="cell100 column2"></th>
-                                            <th class="cell100 column3">Name</th>
-                                            <th class="cell100 column4"></th>
-                                            <th class="cell100 column5">Status</th>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 mx-auto text-center">
+                    <div class="table100 ver2 m-b-40">
+                        <div class="table100-head">
+                            <table>
+                                <thead>
+                                    <tr class="row100 head">
+                                        <th class="cell100 column1">USN</th>
+                                        <th class="cell100 column2"></th>
+                                        <th class="cell100 column3">Name</th>
+                                        <th class="cell100 column4"></th>
+                                        <th class="cell100 column5">Status</th>
 
-                                        </tr>
-                                    </thead>
-                                </table>
-                            </div>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
 
-                            <div class="table100-body js-pscroll">
-                                <table>
+                        <div class="table100-body js-pscroll">
+                            <table>
 
-                                    <tbody>
+                                <tbody>
 
-                                        @for (int i = 0; i < Model.Attds.Count(); i++)
+                                    @for (int i = 0; i < Model.Attds.Count(); i++)
                                         {
 
-                                            <tr class="row100 body">
-                                                <td class="cell100 column1">
-                                                    @Html.DisplayFor(modelItem => modelItem.Attds[i].Student_USN)
-                                                </td>
-                                                <td class="cell100 column2">
+                                    <tr class="row100 body">
+                                        <td class="cell100 column1">
+                                            @Html.DisplayFor(modelItem => modelItem.Attds[i].Student_USN)
+                                        </td>
+                                        <td class="cell100 column2">
 
-                                                <td class="cell100 column3">
-                                                    @Html.DisplayFor(modelItem => modelItem.Students[i].Name)
-                                                </td>
-                                                <td class="cell100 column4"></td>
+                                        <td class="cell100 column3">
+                                            @Html.DisplayFor(modelItem => modelItem.Students[i].Name)
+                                        </td>
+                                        <td class="cell100 column4"></td>
 
-                                                <td class="cell100 column5">
+                                        <td class="cell100 column5">
 
-                                                    @{
+                                            @{
                                                         AttendanceManagementDBEntities1 db = new AttendanceManagementDBEntities1();
                                                         AttendanceViewModel attendanceViewModel = new AttendanceViewModel();
 
@@ -201,49 +201,49 @@
                                                         var a = db.Attendances.FirstOrDefault(u => u.Id == att.Id);
 
 
-                                                    }
-                                                    @if (a.IsPresent == 1)
+                                            }
+                                            @if (a.IsPresent == 1)
                                                     {
-                                                        <h3>P</h3>
+                                            <h3>P</h3>
                                                     }
                                                     else
 
                                                     {
-                                                        <h3>A</h3>
+                                            <h3>A</h3>
                                                     }
 
-                                                </td>
-                                            </tr>
+                                        </td>
+                                    </tr>
                                         }
 
 
 
 
-                                    </tbody>
-                                </table>
-                            </div>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-10 mx-auto text-center">
-                        <div class="container-login100-form-btn" style="padding-bottom: 5%">
-                            <button class="login100-form-btn" type="submit">
-                                Submit
-                            </button>
-                        </div>
-                    </div>
-
                 </div>
             </div>
-        </header>
+            <div class="row">
+                <div class="col-lg-10 mx-auto text-center">
+                    <div class="container-login100-form-btn" style="padding-bottom: 5%">
+                        <button class="login100-form-btn" type="submit">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
 
 
 
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
-            <i class="fa fa-angle-up"></i>
-        </a>
+ <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
+        <i class="fa fa-angle-up"></i>
+    </a>
     }
 
     <!-- Bootstrap core JavaScript -->

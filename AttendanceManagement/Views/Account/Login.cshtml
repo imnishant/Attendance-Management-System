@@ -59,7 +59,7 @@
 <body>
     <!-- main -->
     <div class="main-w3layouts wrapper custom_nish">
-        <h1 style="color:white;">LOGIN</h1>
+  
         @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
         {
             @Html.AntiForgeryToken()
@@ -68,14 +68,12 @@
                 <div class="agileits-top">
 
                     <form action="#" method="post">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "email", type = "email", name = "email", placeholder = "Email" })
-                        <span></span>
-
+                      
+                        <h1 style="color:white;">LOGIN</h1>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "email", type = "email", name = "email", style = "font-family:Open Sans", placeholder = "Email", })
                         @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-
-                        @Html.PasswordFor(m => m.Password, new { @class = "", type = "password", name = "password", placeholder = "Password" })
-                        <span></span>
-
+                      
+                        @Html.PasswordFor(m => m.Password, new { @class = "", type = "password", name = "password", style = "font-family:Open Sans", placeholder = "Password" })
                         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                         <input type="submit" value="LOGIN">
                     </form>

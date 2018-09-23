@@ -26,16 +26,17 @@ namespace AttendanceManagement.Controllers
             return View();
         }
 
-        /// <summary>  
-        /// This function is used to download excel format.  
-        /// </summary>  
-        /// <param name="Path"></param>  
-        /// <returns>file</returns>  
-        public FileResult DownloadExcel()
-        {
-            string path = "/Doc/Details.xlsx";
-            return File(path, "application/vnd.ms-excel", "Details.xlsx");
-        }
+        // <summary>  
+        // This function is used to download excel format.  
+        // and exec it
+        // </summary>  
+        // <param name="Path"></param>  
+        // <returns>file</returns>  
+        //public FileResult DownloadExcel()
+        //{
+        //    string path = "/Doc/Details.xlsx";
+        //    return File(path, "application/vnd.ms-excel", "Details.xlsx");
+        //}
 
         [HttpPost]
         public JsonResult UploadExcel(Student students, HttpPostedFileBase FileUpload)
@@ -84,10 +85,10 @@ namespace AttendanceManagement.Controllers
                     DataTable dtable3 = ds3.Tables["ExcelTable"];
 
 
-                    string sheetName = "Student";
-                    string sheetName1 = "Subject";
-                    string sheetName2 = "Department";
-                    string sheetName3 = "Teacher";
+                    string sheetName = "Sheet1";
+                    string sheetName1 = "Sheet2";
+                    string sheetName2 = "Sheet3";
+                    string sheetName3 = "Sheet4";
 
                     var excelFile = new ExcelQueryFactory(pathToExcelFile);
                     var stud = from a in excelFile.Worksheet<Student>(sheetName) select a;
@@ -96,14 +97,14 @@ namespace AttendanceManagement.Controllers
                     {
                         try
                         {
-                            if (a.USN != "" && a.Name != "" && a.Section != null && a.Sem != 0 && a.Department_DID != null && a.Subject_SubCode != null)
+                            if (a.USN != "" && a.Name != "" && a.Section != null && a.Sem != 0 && a.Department_DID != null)
                             {
                                 Student TU = new Student();
                                 TU.Name = a.Name;
                                 TU.USN = a.USN;
                                 TU.Sem = a.Sem;
                                 TU.Department_DID = a.Department_DID;
-                                TU.Subject_SubCode = a.Subject_SubCode;
+                               // TU.Subject_SubCode = a.Subject_SubCode;
                                 db.Students.Add(TU);
                                 db.SaveChanges();
                             }
@@ -115,7 +116,8 @@ namespace AttendanceManagement.Controllers
                                 if (a.Sem == 0) data.Add("<li>Sem is required</li>");
                                 if (a.Section == "" || a.Section == "" ) data.Add("<li>Section is required</li>");
                                 if (a.Department_DID == "" || a.Department_DID == "") data.Add("<li>Department_DID is required</li>");
-                                if (a.Subject_SubCode == "" || a.Subject_SubCode == "") data.Add("<li>Subject SubCode is required</li>");
+                                //
+                              //  if (a.Subject_SubCode == "" || a.Subject_SubCode == "") data.Add("<li>Subject SubCode is required</li>");
 
                                 data.Add("</ul>");
                                 data.ToArray();

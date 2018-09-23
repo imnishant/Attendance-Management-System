@@ -19,6 +19,9 @@
                     @Html.ActionLink("Home", "Index", "TeachersPortal", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
                 </li>
                 <li class="nav-item">
+                    @Html.ActionLink("Add Subject", "Index", "TeacherTeachesStudent", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                </li>
+                <li class="nav-item">
                     @Html.ActionLink("Manage Attendance", "Index", "ManageAttendance", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
                 </li>
                 <li class="nav-item">
@@ -29,7 +32,7 @@
                 </li>
 
                 <li class="nav-item">
-                   @Html.Partial("_LoginPartial")
+                    @Html.Partial("_LoginPartial")
                 </li>
 
             </ul>
@@ -47,5 +50,3 @@
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
 @RenderSection("scripts", required: false)
-
-

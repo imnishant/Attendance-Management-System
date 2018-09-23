@@ -34,7 +34,7 @@
 
 <body>
 
-    @using (Html.BeginForm("UploadExcel", "Upload", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return myFunction()" }))
+    @using (Html.BeginForm("UploadExcel", "BulkUpload", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
 
 
@@ -75,7 +75,8 @@
                             <div class="card-header">
                                 <strong>Bulk Upload Using Excel File</strong>
                             </div>
-                            <div class="card-body card-block">
+                            <div class="card-body card-block form-group">
+
                                 <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
 
                                     <div class="row form-group">
@@ -85,13 +86,11 @@
 
                                 </form>
                             </div>
-                            <div class="card-footer">
+                            <div class="card-footer form-group">
                                 <button type="submit" class="btn btn-primary btn-sm">
-                                    <i class="fa fa-dot-circle-o"></i> Create
+                                    <i class="fa fa-dot-circle-o"></i> Upload 
                                 </button>
-                                <button type="reset" class="btn btn-danger btn-sm">
-                                    <i class="fa fa-ban"></i> Reset
-                                </button>
+                            
                             </div>
                         </div>
 

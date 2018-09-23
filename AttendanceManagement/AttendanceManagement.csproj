@@ -71,9 +71,6 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
-    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -82,12 +79,6 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -212,12 +203,12 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminPortalController.cs" />
     <Compile Include="Controllers\BulkUploadController.cs" />
     <Compile Include="Controllers\CheckAttendanceController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
+    <Compile Include="Controllers\EditTeacherProfileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageAttendanceController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -227,10 +218,10 @@
     <Compile Include="Controllers\SubjectsController.cs" />
     <Compile Include="Controllers\TeachersController.cs" />
     <Compile Include="Controllers\TeachersPortalController.cs" />
+    <Compile Include="Controllers\TeacherTeachesStudentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AMS.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -261,7 +252,8 @@
     <Compile Include="Models\Attendance.cs">
       <DependentUpon>AMS.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AttendanceViewModel.cs" />
+    <Compile Include="Models\AttendanceViewModels.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\C__MigrationHistory.cs">
       <DependentUpon>AMS.tt</DependentUpon>
     </Compile>
@@ -285,9 +277,10 @@
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\CheckAttendanceModel.cs" />
-    <Compile Include="Models\ManageAttendanceModel.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Student.cs">
+      <DependentUpon>AMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Student_Studies_Subject.cs">
       <DependentUpon>AMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Subject.cs">
@@ -299,6 +292,9 @@
     <Compile Include="Models\Teacher.cs">
       <DependentUpon>AMS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TeacherTeachesStudentModel.cs" />
+    <Compile Include="Models\ManageAttendanceModel.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Teacher_Teaches_Student.cs">
       <DependentUpon>AMS.tt</DependentUpon>
     </Compile>
@@ -1944,8 +1940,14 @@
     <Content Include="scss\_sidebar.scss" />
     <Content Include="scss\_variables.scss" />
     <Content Include="Views\ManageAttendance\AddAttendance.cshtml" />
-    <Content Include="Views\CheckAttendance\Index.cshtml" />
+    <Content Include="Views\Shared\_APLoginPartial.cshtml" />
+    <Content Include="Views\EditTeacherProfile\Index.cshtml" />
+    <Content Include="Views\EditTeacherProfile\AddPhoneNumber.cshtml" />
+    <Content Include="Views\EditTeacherProfile\ChangePassword.cshtml" />
+    <Content Include="Views\EditTeacherProfile\ManageLogins.cshtml" />
     <Content Include="Views\CheckAttendance\GetAttendance.cshtml" />
+    <Content Include="Views\CheckAttendance\Index.cshtml" />
+    <Content Include="Views\TeacherTeachesStudent\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

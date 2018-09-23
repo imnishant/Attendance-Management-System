@@ -64,17 +64,17 @@
             <div class="main-agileinfo">
                 <div class="agileits-top">
                     <form action="#" method="post">
-                        @Html.TextBoxFor(m => m.Name, new { @class = "email", type = "text", name = "name", placeholder = "Name" })
+                        @Html.TextBoxFor(m => m.Name, new { @class = "email", type = "text", name = "name", style = "font-family:Open Sans", placeholder = "Name" })
                         @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
-                        @Html.TextBoxFor(m => m.TID, new { @class = "", type = "text", name = "tid", placeholder = "TID" })
+                        @Html.TextBoxFor(m => m.TID, new { @class = "", type = "text", name = "tid", placeholder = "TID", style = "font-family:Open Sans" })
                         @Html.ValidationMessageFor(m => m.TID, "", new { @class = "text-danger" })
-                        @Html.TextBoxFor(m => m.DID, new { @class = "email", type = "text", name = "department", placeholder = "Department" })
+                        @Html.TextBoxFor(m => m.DID, new { @class = "email", type = "text", name = "department", placeholder = "Department", style = "font-family:Open Sans" })
                         @Html.ValidationMessageFor(m => m.DID, "", new { @class = "text-danger" })
-                        @Html.TextBoxFor(m => m.Email, new { @class = "", type = "text", name = "email", placeholder = "Email" })
+                        @Html.TextBoxFor(m => m.Email, new { @class = "", type = "text", name = "email", placeholder = "Email", style = "font-family:Open Sans" })
                         @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                        @Html.PasswordFor(m => m.Password, new { @class = "email", type = "password", name = "pass", placeholder = "Password" })
+                        @Html.PasswordFor(m => m.Password, new { @class = "email", type = "password", name = "pass", placeholder = "Password", style = "font-family:Open Sans" })
                         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "", type = "password", name = "pass", placeholder = "Confirm Password" })
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "", type = "password", name = "pass", placeholder = "Confirm Password", style = "font-family:Open Sans" })
                         @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
 
 
