@@ -113,7 +113,7 @@
             <br>
             <div class="row">
                 <div class="col-lg-12 mx-auto">
-                    <h1 class="text-uppercase">
+                    <h1 class="text-uppercase"  style="padding-top: 4%">
                         <strong style="color: white">Manage Attendance</strong>
                     </h1>
                 </div>
@@ -125,7 +125,7 @@
                     <fieldset>
 
                         <div class="form-group">
-                            @Html.DropDownList("Department_DID", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.DropDownList("Department_DID", null,"Select Department", htmlAttributes: new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.Department_DID, "", new { @class = "text-danger" })
                         </div>
                     </fieldset>
@@ -146,7 +146,7 @@
                                                     new SelectListItem { Text = "6", Value = "6" },
                                                     new SelectListItem { Text = "7", Value = "7" },
                                                     new SelectListItem { Text = "8", Value = "8" },
-                                                    }, new { @class = "form-control" })
+                                                    },"Select Semester", new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.Sem, "", new { @class = "text-danger" })
                         </div>
                     </fieldset>
@@ -162,7 +162,7 @@
                                         new SelectListItem { Text = "A", Value = "A", Selected = true},
                                         new SelectListItem { Text = "B", Value = "B" },
                                         new SelectListItem { Text = "C", Value = "C" },
-                                        }, new { @class = "form-control" })
+                                        },"Selection Section", new { @class = "form-control"})
                             @Html.ValidationMessageFor(model => model.Section, "", new { @class = "text-danger" })
                         </div>
 
@@ -186,7 +186,7 @@
 
                         <div class="form-group">
                             @Html.DropDownList("Slot", new List<SelectListItem>{
-                                            new SelectListItem { Text = "S1", Value = "S1", Selected = true},
+                                            new SelectListItem { Text = "S1", Value = "S1" },
                                             new SelectListItem { Text = "S2", Value = "S2" },
                                             new SelectListItem { Text = "S3", Value = "S3" },
                                             new SelectListItem { Text = "S4", Value = "S4" },
@@ -195,7 +195,7 @@
                                             new SelectListItem { Text = "S7", Value = "S7" },
                                             new SelectListItem { Text = "L1", Value = "L1" },
                                             new SelectListItem { Text = "L2", Value = "L2" },
-                                            }, new { @class = "form-control" })
+                                            },"Select Slot", new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.Slot, "", new { @class = "text-danger" })
                         </div>
                     </fieldset>

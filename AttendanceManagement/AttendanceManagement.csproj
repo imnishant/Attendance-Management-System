@@ -212,6 +212,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageAttendanceController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\newAdminController.cs" />
     <Compile Include="Controllers\RegController.cs" />
     <Compile Include="Controllers\SignInController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
@@ -277,6 +278,13 @@
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\CheckAttendanceModel.cs" />
+    <Compile Include="Models\NewAdminViewModel.cs" />
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>AMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>AMS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Student.cs">
       <DependentUpon>AMS.tt</DependentUpon>
     </Compile>
@@ -1104,10 +1112,12 @@
     <Content Include="assets\images\flag\fr.png" />
     <Content Include="assets\images\flag\it.png" />
     <Content Include="assets\images\flag\us.png" />
+    <Content Include="assets\images\img5.jpg" />
     <Content Include="assets\images\logo.png" />
     <Content Include="assets\images\logo2.png" />
     <Content Include="assets\images\logos.png" />
     <Content Include="assets\images\placeholder.png" />
+    <Content Include="assets\images\ssadads.jpg" />
     <Content Include="assets\images\twitter_corner_black.png" />
     <Content Include="assets\images\twitter_corner_blue.png" />
     <Content Include="assets\js\chartjs.min.js" />
@@ -1948,6 +1958,7 @@
     <Content Include="Views\CheckAttendance\GetAttendance.cshtml" />
     <Content Include="Views\CheckAttendance\Index.cshtml" />
     <Content Include="Views\TeacherTeachesStudent\Index.cshtml" />
+    <Content Include="Views\newAdmin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

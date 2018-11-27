@@ -17,5 +17,6 @@ namespace AttendanceManagement.ViewModel
         public List<Boolean> IsPresent { get; set; }
 
         public virtual Student Student { get; set; }
+
     }
 }
