@@ -125,7 +125,7 @@
             <br>
             <div class="row">
                 <div class="col-lg-10 mx-auto">
-                    <h1 class="text-uppercase">
+                    <h1 class="text-uppercase" style="padding-top: 4%">
                         <strong style="color: white">Attendance</strong>
                     </h1>
                 </div>
@@ -161,9 +161,9 @@
                                 <thead>
                                     <tr class="row100 head">
                                         <th class="cell100 column1">USN</th>
-                                        <th class="cell100 column2"></th>
-                                        <th class="cell100 column3">Name</th>
-                                        <th class="cell100 column4"></th>
+                                        <th class="cell100 column2">Name</th>
+                                        <th class="cell100 column3">Classes</th>
+                                        <th class="cell100 column4">Attendance (%)</th>
                                         <th class="cell100 column5">Status</th>
 
                                     </tr>
@@ -184,11 +184,17 @@
                                             @Html.DisplayFor(modelItem => modelItem.Attds[i].Student_USN)
                                         </td>
                                         <td class="cell100 column2">
-
-                                        <td class="cell100 column3">
                                             @Html.DisplayFor(modelItem => modelItem.Students[i].Name)
                                         </td>
-                                        <td class="cell100 column4"></td>
+
+                                        <td class="cell100 column3">
+                                            
+                                            @Html.DisplayFor(modelItem => modelItem.presentClasses[i])/
+                                            @Html.DisplayFor(modelItem => modelItem.totalClass)
+                                        </td>
+                                        <td class="cell100 column4">
+                                            @Html.DisplayFor(modelItem => modelItem.percentageOfAttendance[i])
+                                        </td>
 
                                         <td class="cell100 column5">
 

@@ -116,6 +116,9 @@ namespace AttendanceManagement.Controllers
         {
             Subject subject = db.Subjects.Find(id);
             db.Subjects.Remove(subject);
+            var att = db.Attendances.Where(u => u.Subject_SubCode == id).ToList();
+            for (int i = 0; i < att.Count; i++)
+                db.Attendances.Remove(att[i]);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

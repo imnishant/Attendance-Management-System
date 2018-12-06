@@ -141,7 +141,7 @@
           <Property Name="Student_USN" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Teacher_TID" Type="nvarchar" MaxLength="7" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Attendanc__Stude__6E01572D">
+        <Association Name="FK__Attendanc__Stude__787EE5A0">
           <End Role="Student" Type="Self.Student" Multiplicity="1" />
           <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -153,7 +153,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Attendanc__Subje__6EF57B66">
+        <Association Name="FK__Attendanc__Subje__797309D9">
           <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
           <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -165,10 +165,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Attendanc__Teach__6FE99F9F">
-          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+        <Association Name="FK__Attendanc__Teach__7A672E12">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
           <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Teacher">
@@ -340,6 +338,9 @@
         <Function Name="createNewAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserName" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="delete_student" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="usn" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -386,15 +387,15 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teacher_Teaches_Student" EntityType="Self.Teacher_Teaches_Student" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Attendanc__Stude__6E01572D" Association="Self.FK__Attendanc__Stude__6E01572D">
+          <AssociationSet Name="FK__Attendanc__Stude__787EE5A0" Association="Self.FK__Attendanc__Stude__787EE5A0">
             <End Role="Student" EntitySet="Student" />
             <End Role="Attendance" EntitySet="Attendance" />
           </AssociationSet>
-          <AssociationSet Name="FK__Attendanc__Subje__6EF57B66" Association="Self.FK__Attendanc__Subje__6EF57B66">
+          <AssociationSet Name="FK__Attendanc__Subje__797309D9" Association="Self.FK__Attendanc__Subje__797309D9">
             <End Role="Subject" EntitySet="Subject" />
             <End Role="Attendance" EntitySet="Attendance" />
           </AssociationSet>
-          <AssociationSet Name="FK__Attendanc__Teach__6FE99F9F" Association="Self.FK__Attendanc__Teach__6FE99F9F">
+          <AssociationSet Name="FK__Attendanc__Teach__7A672E12" Association="Self.FK__Attendanc__Teach__7A672E12">
             <End Role="Teacher" EntitySet="Teacher" />
             <End Role="Attendance" EntitySet="Attendance" />
           </AssociationSet>
@@ -866,7 +867,10 @@
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
           <FunctionImport Name="CreateAdmin">
-            <Parameter Name="UserName" Mode="In" Type="String" />
+          <Parameter Name="UserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="delete_student">
+          <Parameter Name="usn" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <Association Name="FK__Attendanc__Stude__6E01572D">
@@ -1067,6 +1071,7 @@
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="AttendanceManagementDBModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="AttendanceManagementDBModel.Store.sp_upgraddiagrams" />
           <FunctionImportMapping FunctionImportName="CreateAdmin" FunctionName="AttendanceManagementDBModel.Store.createNewAdmin" />
+          <FunctionImportMapping FunctionImportName="delete_student" FunctionName="AttendanceManagementDBModel.Store.delete_student" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -93,12 +93,12 @@ namespace AttendanceManagement.Controllers
         {
             Student student = db.Students.FirstOrDefault(u => u.USN == id);
 
-            var sss = db.Student_Studies_Subject.Where(u => u.USN == id).ToList();
+            /*var sss = db.Student_Studies_Subject.Where(u => u.USN == id).ToList();
             student_studies_subject.sss = sss;
 
             for (int i = 0; i < sss.Count; i++)
-                db.Student_Studies_Subject.Remove(sss[i]);
-
+               db.Student_Studies_Subject.Remove(sss[i]);*/
+            db.delete_student(student.USN);
             db.Students.Remove(student);
             db.SaveChanges();
             return RedirectToAction("Index");

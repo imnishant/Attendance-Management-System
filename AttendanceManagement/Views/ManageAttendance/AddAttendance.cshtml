@@ -1,12 +1,23 @@
-﻿@model AttendanceManagement.ViewModel.AttendanceViewModel
+﻿@using AttendanceManagement.ViewModel;
+@using AttendanceManagement.Models;
+@using System.Linq;
+
+@model AttendanceManagement.ViewModel.AttendanceViewModel
 
 @{
     ViewBag.Title = "AddAttendance";
     var Students = Model.Students;
 
     Layout = "~/Views/Shared/_TPLayout.cshtml";
-}
 
+
+    AttendanceManagementDBEntities1 dbo = new AttendanceManagementDBEntities1();
+
+    var teacher = dbo.Teachers.FirstOrDefault(u => u.TID == Model.TeacherId);
+    var department = dbo.Departments.FirstOrDefault(u => u.DID == teacher.Department_DID);
+    var tts = dbo.Teacher_Teaches_Student.FirstOrDefault(u => u.Teacher_TID == teacher.TID);
+    var student = dbo.Students.FirstOrDefault(u => u.USN == tts.Student_USN);
+}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -111,7 +122,7 @@
             <div class="container text-center my-auto">
                 <br>
                 <br>
-                <div class="row"  style="position:center; padding-top: 6%; padding-bottom: 3%">
+                <div class="row" style="position:center; padding-top: 6%; padding-bottom: 3%">
                     <div class="col-lg-10 mx-auto">
                         <h1 class="text-uppercase">
                             <strong style="color: white">Upload Attendance</strong>
@@ -123,16 +134,19 @@
                     <div class="col-lg-10 mx-auto text-center">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="#">@Html.DisplayFor(model => model.TeacherId)</a>
-                            </li>
-                            <li class="breadcr umb-item">
-                                <a href="#">@Html.DisplayFor(model => model.SubjectCode)</a>
+                                @department.Name
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">@Html.DisplayFor(model => model.Date)</a>
+                                @student.Sem
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">@Html.DisplayFor(model => model.Slot)</a>
+                                @student.Section
+                            </li>
+                            <li class="breadcrumb-item">
+                                @Model.Date
+                            </li>
+                            <li class="breadcrumb-item">
+                                @Model.Slot
                             </li>
                             <!-- <li class="breadcrumb-item active">Html.DisplayNameFor(model => model.Slot)</li>-->
                         </ol>

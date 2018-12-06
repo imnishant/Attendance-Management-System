@@ -56,12 +56,11 @@
                         <a href="~/AdminPortal"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
                     <h3 class="menu-title">Add</h3><!-- /.menu-title -->
-
-
-                    <li>
-                        <a href="@Url.Action("Index", "BulkUpload")"> <i class="menu-icon ti-folder"></i>Bulk Upload </a>
-                    </li>
-
+                    <!--
+    <li>
+        <a href="@Url.Action("Index", "BulkUpload")"> <i class="menu-icon ti-folder"></i>Bulk Upload </a>
+    </li>
+    -->
                     <li>
                         <a href="@Url.Action("Create", "Teachers")"> <i class="menu-icon ti-user"></i>Teachers </a>
                     </li>
@@ -73,13 +72,15 @@
                     <li>
                         <a href="@Url.Action("Create", "Subjects")"> <i class="menu-icon ti-book"></i>Subjects </a>
                     </li>
-                    <li>
-                        <a href="@Url.Action("Index", "newAdmin")"> <i class="menu-icon ti-book"></i>Add New Admin </a>
-                    </li>
 
                     <li>
                         <a href="@Url.Action("Create", "Students")"> <i class="menu-icon ti-user"></i>Students </a>
                     </li>
+
+                    <li>
+                        <a href="@Url.Action("Index", "newAdmin")"> <i class="menu-icon ti-book"></i>New Admin </a>
+                    </li>
+
 
                     <h3 class="menu-title">View</h3><!-- /.menu-title -->
 

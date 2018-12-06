@@ -144,8 +144,11 @@ namespace AttendanceManagement.Controllers
                 db.Teacher_Teaches_Student.Remove(TTS[i]);
             }
 
-
-
+            var att = db.Attendances.Where(u => u.Teacher_TID == id).ToList();
+            for (int i = 0; i < att.Count(); i++)
+            {
+                db.Attendances.Remove(att[i]);
+            }
 
             db.Teachers.Remove(teacher);
             db.SaveChanges();

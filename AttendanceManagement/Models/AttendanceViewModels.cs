@@ -15,8 +15,9 @@ namespace AttendanceManagement.ViewModel
         public string Slot { get; set; }
         public string SubjectCode { get; set; }
         public List<Boolean> IsPresent { get; set; }
-
+        public int totalClass { get; set; }
         public virtual Student Student { get; set; }
-
+        public List<int> presentClasses = new List<int>();
+        public List<Double> percentageOfAttendance = new List<Double>();
     }
 }

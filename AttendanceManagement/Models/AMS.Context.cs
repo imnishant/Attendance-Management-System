@@ -152,5 +152,14 @@ namespace AttendanceManagement.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CreateAdmin", userNameParameter);
         }
+    
+        public virtual int delete_student(string usn)
+        {
+            var usnParameter = usn != null ?
+                new ObjectParameter("usn", usn) :
+                new ObjectParameter("usn", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("delete_student", usnParameter);
+        }
     }
 }

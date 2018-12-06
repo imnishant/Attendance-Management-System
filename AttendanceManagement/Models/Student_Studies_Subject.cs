@@ -20,6 +20,5 @@ namespace AttendanceManagement.Models
     
         public virtual Student Student { get; set; }
         public virtual Subject Subject { get; set; }
-        public List<Student_Studies_Subject> sss { get; set; }
     }
 }
